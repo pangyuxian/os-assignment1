@@ -1,0 +1,17 @@
+CC = gcc
+LIBS = -lm -lpthread -lrt
+
+all: cons prod dph
+
+cons: cons.c
+	gcc cons.c -o cons -lm -lpthread -lrt
+
+prod: prod.c
+	gcc prod.c -o prod -lm -lpthread -lrt
+
+dph: dph.c
+	gcc dph.c -o dph -lm -lpthread -lrt
+
+.PHONY: clean
+clean:
+	rm cons prod dph
