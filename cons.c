@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     
     for (int i = 0; i < NUM_THREADS; i++){
         pthread_attr_init(&attr[i]);
-        pthread_create(&tid[i], &attr[i], runner, &lambda_c);
+        pthread_create(&tid[i], &attr[i], consumer, &lambda_c);
     }
 
     for (int j = 0; j < NUM_THREADS; j++){
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
 }
 
 
-double sleep_time(double lambda_p){
+double sleep_time(double lambda_c){
     double r;
     r = ((double)rand() / RAND_MAX);
 
@@ -83,12 +83,12 @@ double sleep_time(double lambda_p){
         r = ((double)rand() / RAND_MAX);
     }
 
-    r = (-1 / lambda_p) * log(1-r);
+    r = (-1 / lambda_c) * log(1-r);
 
     return r;
 }
 
-void *runner(void *param){
+void *consumer(void *param){
     double lambda_c = *(double *)param;
     do{
         double interval_time = lambda_c;
