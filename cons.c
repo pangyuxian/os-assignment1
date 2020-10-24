@@ -33,7 +33,7 @@ sem_t *mutex;
 void *ptr;
 
 double sleep_time(double lambda_c);//返回一个符合负指数分布的随机变量
-void *runner(void *param);//消费者
+void *consumer(void *param);//消费者
 
 int main(int argc, char *argv[])
 {
